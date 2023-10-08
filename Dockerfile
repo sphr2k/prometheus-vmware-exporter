@@ -8,7 +8,10 @@
 # Create a stage for building the application.
 ARG GO_VERSION=1.21.1
 FROM golang:${GO_VERSION} AS build
+
 WORKDIR /src
+
+COPY . .
 
 # Build the application.
 RUN CGO_ENABLED=0 go build -o /bin/prometheus-vmware-exporter .
